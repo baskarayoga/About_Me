@@ -15,6 +15,9 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
+    //Instance class MyName.kt
+    private val myName: MyName = MyName(name = "Yoga Baskara")//MyName("Aleks Haecky")
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         /*
@@ -27,6 +30,9 @@ class MainActivity : AppCompatActivity() {
 
         //binding data not use findViewById() anymore
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+
+        binding.myName = myName
+
         binding.doneButton.setOnClickListener{
             addNickName(it)
         }
@@ -45,7 +51,9 @@ class MainActivity : AppCompatActivity() {
 
         //use data binding
         binding.apply {
-            nicknameText.text = binding.nicknameEdit.text
+            //nicknameText.text = binding.nicknameEdit.text
+            myName?.nickname = nicknameEdit.text.toString()
+            myName?.name = "Siapa Lo?"
             invalidateAll()
             nicknameEdit.visibility = View.GONE
             doneButton.visibility = View.GONE

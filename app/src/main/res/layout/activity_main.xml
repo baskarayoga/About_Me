@@ -3,6 +3,12 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <data>
+        <variable
+            name="myName"
+            type="com.example.myapplication.MyName" />
+    </data>
+
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -15,8 +21,10 @@
         style="@style/NameStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/name"
+        android:text="@={myName.name}"
         android:textAlignment="center" />
+
+    <!-- android:text="@string/name" -->
 
     <EditText
         android:id="@+id/nickname_edit"
@@ -43,6 +51,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAlignment="center"
+        android:text="@={myName.nickname}"
         android:visibility="gone" />
 
     <ImageView
